@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 07:15:50 by tdehne            #+#    #+#             */
-/*   Updated: 2022/07/20 12:50:49 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/07/20 13:02:18 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,5 @@ int main(int argc, char **argv)
 		while (1)
 			pause();
 	}
-	
 	return (0);
 }

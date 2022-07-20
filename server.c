@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 14:40:38 by tdehne            #+#    #+#             */
-/*   Updated: 2022/07/20 12:51:36 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/07/20 13:02:08 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ int main(void)
 	ft_putchar_fd('\n', 1);
 	sa.sa_sigaction = decode_msg;
 	sa.sa_flags = SA_SIGINFO;
-	//sa.sa_flags = SA_RESTART;
-	//sa.sa_handler = &handle_sig;
 	sigaction(SIGUSR1, &sa, 0);
 	sigaction(SIGUSR2, &sa, 0);
 	while (1)
