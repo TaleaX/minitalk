@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 07:15:50 by tdehne            #+#    #+#             */
-/*   Updated: 2022/10/11 17:38:51 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/10/11 17:44:09 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,15 @@ static	void	send_msg(int pid, char *str)
 			else
 				kill(pid, SIGUSR2);
 			c = c >> 1;
-			usleep(100);
+			usleep(40);
 		}
 		str++;
 	}
-	usleep(100);
 	c = 8;
 	while (c--)
 	{
 		kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(40);
 	}
 }
 
