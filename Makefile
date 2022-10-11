@@ -4,6 +4,8 @@ NAME := client
 NAME_SERVER := server
 SRC_CLIENT := client.c
 SRC_SERVER := server.c
+LIB_DIR := libft_printf/
+LIBFT := $(LIB_DIR)libft.a
 LDFLAGS := -L ./libft_printf/ -lft
 INC := -I libft_printf/
 
@@ -15,6 +17,9 @@ $(NAME_SERVER) : $(SRC_SERVER)
 $(NAME) : $(SRC_CLIENT)
 	$(CC) $(CFLAGS) $(SRC_CLIENT) $(LDFLAGS) $(INC) -o $@
 
+$(LIBFT) :
+	make -C $(LIB_DIR)
+	
 clean :
 	rm -rf *.o
 
