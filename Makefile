@@ -1,17 +1,18 @@
 CC := gcc -g
-CFLAGS := -Wall -Wextra #-Werror
-NAME := minitalk
+CFLAGS := -Wall -Wextra -Werror
+NAME := client
+NAME_SERVER := server
 SRC_CLIENT := client.c
 SRC_SERVER := server.c
 LDFLAGS := -L ./libft_printf/ -lft
 INC := -I libft_printf/
 
-all : server client
+all : $(NAME) $(NAME_SERVER)
 
-server : $(SRC_SERVER)
+$(NAME_SERVER) : $(SRC_SERVER)
 	$(CC) $(CFLAGS) $(SRC_SERVER) $(LDFLAGS) $(INC) -o $@
 
-client : $(SRC_CLIENT)
+$(NAME) : $(SRC_CLIENT)
 	$(CC) $(CFLAGS) $(SRC_CLIENT) $(LDFLAGS) $(INC) -o $@
 
 clean :

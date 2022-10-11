@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 07:15:50 by tdehne            #+#    #+#             */
-/*   Updated: 2022/10/03 19:20:41 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/10/11 17:38:51 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,29 @@ static	void	received(int sig)
 static	void	send_msg(int pid, char *str)
 {
 	char	c;
+	int		counter;
 
 	while (*str)
 	{
-		c = *str++;
-		while (c)
+		c = *str;
+		counter = 8;
+		while (counter--)
 		{
 			if (c & 1)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
 			c = c >> 1;
-			usleep(300);
+			usleep(100);
 		}
+		str++;
 	}
-	//usleep(300);
+	usleep(100);
 	c = 8;
-	while (--c)
+	while (c--)
 	{
 		kill(pid, SIGUSR2);
-		usleep(300);
+		usleep(100);
 	}
 }
 
