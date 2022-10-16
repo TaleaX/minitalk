@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 14:40:38 by tdehne            #+#    #+#             */
-/*   Updated: 2022/10/11 17:38:31 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/10/11 20:41:04 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static void	decode_msg(int sig, siginfo_t *info, void *context)
 	int						bin;
 
 	if (context)
-		;	
+		;
 	bin = 0;
 	if (sig == SIGUSR1)
 		bin = (1 << counter);
 	c |= bin;
 	counter++;
-	if(counter == 8)
+	if (counter == 8)
 	{
 		if (!c)
 		{
@@ -41,7 +41,7 @@ static void	decode_msg(int sig, siginfo_t *info, void *context)
 	}
 }
 
-int main(void)
+int	main(void)
 {
 	struct sigaction	sa;
 

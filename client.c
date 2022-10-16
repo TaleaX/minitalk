@@ -6,7 +6,7 @@
 /*   By: tdehne <tdehne@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 07:15:50 by tdehne            #+#    #+#             */
-/*   Updated: 2022/10/11 17:44:09 by tdehne           ###   ########.fr       */
+/*   Updated: 2022/10/11 20:46:18 by tdehne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ static	void	send_msg(int pid, char *str)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
+	struct sigaction	sa;
+
 	if (argc == 3)
 	{
-		struct sigaction	sa;
-
 		ft_putstr_fd("Sent    : ", 1);
 		ft_putnbr_fd(ft_strlen(argv[2]), 1);
 		ft_putchar_fd('\n', 1);

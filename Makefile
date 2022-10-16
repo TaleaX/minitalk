@@ -1,5 +1,5 @@
 CC := gcc -g
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra #-Werror
 NAME := client
 NAME_SERVER := server
 SRC_CLIENT := client.c
@@ -11,19 +11,22 @@ INC := -I libft_printf/
 
 all : $(NAME) $(NAME_SERVER)
 
-$(NAME_SERVER) : $(SRC_SERVER)
+$(NAME_SERVER) : $(SRC_SERVER) $(LIBFT)
 	$(CC) $(CFLAGS) $(SRC_SERVER) $(LDFLAGS) $(INC) -o $@
 
-$(NAME) : $(SRC_CLIENT)
+$(NAME) : $(SRC_CLIENT) $(LIBFT)
 	$(CC) $(CFLAGS) $(SRC_CLIENT) $(LDFLAGS) $(INC) -o $@
 
 $(LIBFT) :
 	make -C $(LIB_DIR)
 	
-clean :
-	rm -rf *.o
+clean:
+	make clean -C $(LIB_DIR)
 
-fclean : clean
-	rm -f server client
+fclean: clean
+	rm -f $(NAME) $(NAME_SERVER)
+	rm -rf server.dSYM/
+	rm -rf client.dSYM/
+	make fclean -C $(LIB_DIR)
 
-re : fclean all
+re: fclean all
